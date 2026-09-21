@@ -16,7 +16,7 @@ const revealSelector = [
   ".process-step",
   ".addon-card",
   ".masonry-item",
-  ".about-story__image",
+  ".about-founder-photos",
   ".about-story__copy",
   ".contact-details",
   ".contact-form",
