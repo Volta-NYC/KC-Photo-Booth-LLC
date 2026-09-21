@@ -1,16 +1,9 @@
-export default function ContactPage() {
-  return (
-    <div className="space-y-6">
-      <h1 className="text-3xl font-bold">Contact</h1>
-      <p className="text-gray-600">
-        Replace this with contact info (phone, email, address) and/or a contact form.
-      </p>
+import type { Metadata } from "next"
+import BookingForm from "@/lib/components/booking-form"
+import { contact } from "@/lib/site-data"
 
-      <div className="rounded-md border p-4 text-sm text-gray-600">
-        <div><span className="font-medium text-gray-800">Email:</span> contact@business.com</div>
-        <div><span className="font-medium text-gray-800">Phone:</span> (000) 000-0000</div>
-        <div><span className="font-medium text-gray-800">Address:</span> 123 Main St, City, ST</div>
-      </div>
-    </div>
-  )
+export const metadata: Metadata = { title: "Contact", description: "Reserve a date or ask KC Photo Booth about your event." }
+
+export default function ContactPage() {
+  return <><section className="page-hero"><p className="eyebrow">Ready when you are</p><h1>Let&apos;s make<br /><em>some magic.</em></h1><p>Tell us a little about your celebration and we&apos;ll help you find the right photo booth moment for it.</p></section><section className="content-section"><div className="contact-layout"><div className="contact-details"><p className="eyebrow">Reach out</p><h2>Bring on the<br /><em>good times.</em></h2><dl><dt>Call</dt><dd><a href={contact.phoneHref}>{contact.phone}</a></dd><dt>Email</dt><dd><a href={contact.emailHref}>{contact.email}</a></dd><dt>Based in</dt><dd>Bronx, NY<br />Serving New York City &amp; the tri-state area</dd></dl><p className="eyebrow">Follow the fun</p><p style={{ marginTop: "13px" }}><a className="text-link" href={contact.instagram} target="_blank" rel="noreferrer">Instagram <span>↗</span></a></p></div><BookingForm /></div></section></>
 }

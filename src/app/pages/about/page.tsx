@@ -1,10 +1,9 @@
+import type { Metadata } from "next"
+import Image from "next/image"
+import Link from "next/link"
+
+export const metadata: Metadata = { title: "About KC", description: "Meet Kamar and Catina, the people behind KC Photo Booth." }
+
 export default function AboutPage() {
-  return (
-    <div className="space-y-6">
-      <h1 className="text-3xl font-bold">About</h1>
-      <p className="text-gray-600">
-        Replace this with the business story, mission, and key details.
-      </p>
-    </div>
-  )
+  return <><section className="page-hero"><p className="eyebrow">The people behind the flash</p><h1>Nice to<br /><em>meet you.</em></h1><p>KC Photo Booth is built around a simple promise: your guests should feel welcomed, comfortable, and ready to make a memory.</p></section><section className="content-section"><div className="about-story"><div className="about-story__image"><Image src="/scrape/assets/optimized/catina-lighting.jpg" alt="Catina of KC Photo Booth preparing the event setup" fill sizes="(max-width: 620px) 100vw, 40vw" /></div><div className="about-story__copy"><p className="eyebrow">K + C</p><h2>Your event&apos;s<br /><em>new old friends.</em></h2><p>Hi, I&apos;m Kamar, the K in KC Photo Booth. I&apos;ll be the one operating the photo booth at your next event, making sure your photos and videos look their very best.</p><p>And I&apos;m Catina, the C. As the owner, I&apos;m here to welcome your guests, keep the energy up, and make sure everyone has a great photo booth experience.</p><Link href="/contact" className="button button-outline" style={{ marginTop: "34px" }}>Say hello <span>↗</span></Link></div></div></section><section className="content-section content-section--sun"><p className="eyebrow">What we believe</p><h2 className="section-mini-title" style={{ maxWidth: "900px", marginTop: "18px" }}>The best keepsakes are the ones that make you <em>feel it again.</em></h2><p style={{ maxWidth: "620px", fontSize: "17px", lineHeight: 1.5, marginTop: "27px" }}>Our mission is to create a photo booth experience curated to your event, with memorable moments for you and every guest. We bring the professionalism. You bring the reason to celebrate.</p></section></>
 }
