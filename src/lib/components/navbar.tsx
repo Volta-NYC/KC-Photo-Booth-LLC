@@ -12,6 +12,7 @@ export default function Navbar() {
   useEffect(() => { const close = () => setOpen(false); window.addEventListener("resize", close); return () => window.removeEventListener("resize", close) }, [])
   return (
     <header className="site-header">
+      <div className="site-ticker" aria-label="KC Photo Booth announcement"><div><span>NYC&apos;S 360 PHOTO BOOTH · LET&apos;S MAKE A MEMORY ·</span><span>NYC&apos;S 360 PHOTO BOOTH · LET&apos;S MAKE A MEMORY ·</span><span>NYC&apos;S 360 PHOTO BOOTH · LET&apos;S MAKE A MEMORY ·</span></div></div>
       <nav className="site-nav" aria-label="Main navigation">
         <Link className="brand" href="/" onClick={() => setOpen(false)} aria-label="KC Photo Booth home"><span>KC</span><i>✦</i><small>PHOTO BOOTH</small></Link>
         <div className="desktop-links">{links.map((link) => <Link href={link.href} key={link.href}>{link.label}</Link>)}</div>
