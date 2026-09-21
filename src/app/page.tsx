@@ -3,10 +3,9 @@ import Link from "next/link"
 import { packages } from "@/lib/site-data"
 
 const gallery = [
-  { src: "/assets/optimized/kc-red-carpet-360.jpg", alt: "KC Photo Booth 360 experience at a red carpet event", className: "gallery-wide" },
-  { src: "/assets/optimized/kc-booth-setup-ballroom.jpg", alt: "KC Photo Booth setup in a ballroom", className: "gallery-tall" },
-  { src: "/assets/gallery/gallery-03.jpg", alt: "Guests enjoying a KC Photo Booth event", className: "gallery-tall" },
-  { src: "/assets/gallery/gallery-02.jpg", alt: "A KC Photo Booth celebration in motion", className: "gallery-wide" },
+  { src: "/assets/gallery/gallery-03.jpg", alt: "Wedding guests celebrating with KC Photo Booth", note: "ONE MORE FOR THE CAMERA", width: 720, height: 1280 },
+  { src: "/assets/optimized/kc-booth-setup-day.jpg", alt: "KC digital photo booth at a daytime event", note: "READY WHEN YOU ARE", width: 650, height: 1200 },
+  { src: "/assets/optimized/catina-lighting.jpg", alt: "Catina preparing KC Photo Booth lighting", note: "BEHIND THE FLASH", width: 650, height: 1200 },
 ]
 
 export default function HomePage() {
@@ -19,8 +18,6 @@ export default function HomePage() {
           <div className="hero-footnote"><p>Bring your favorite people. We&apos;ll bring the reason to step in front of the camera.</p><Link className="text-link" href="/contact">Reserve your date <span>↗</span></Link></div>
         </div>
       </section>
-
-      <section className="hero-photo" data-reveal><Image src="/assets/optimized/kc-red-carpet-360.jpg" alt="KC Photo Booth 360 setup with a red carpet" fill priority sizes="100vw" /><p>CELEBRATIONS, PARTIES &amp; EVENTS · NYC</p></section>
 
       <section className="intro-band" data-reveal>
         <p className="eyebrow">For celebrations worth replaying</p>
@@ -63,8 +60,8 @@ export default function HomePage() {
       </section>
 
       <section className="gallery-preview" aria-labelledby="gallery-title">
-        <div className="section-heading gallery-heading" data-reveal><p className="eyebrow">Proof is in the pictures</p><h2 id="gallery-title">Good times, <em>on repeat.</em></h2><Link href="/gallery" className="text-link">See the gallery <span>↗</span></Link></div>
-        <div className="gallery-collage">{gallery.map((image) => <div className={image.className} key={image.src} data-reveal><Image src={image.src} alt={image.alt} fill sizes="(max-width: 760px) 50vw, 35vw" /></div>)}</div>
+        <div className="section-heading gallery-heading" data-reveal><p className="eyebrow">Proof is in the pictures</p><h2 id="gallery-title">Good times,<br /><em>on repeat.</em></h2><p>Three little scenes from the kind of night you&apos;ll want to remember.</p><Link href="/gallery" className="text-link">See the gallery <span>↗</span></Link></div>
+        <div className="gallery-collage">{gallery.map((image, index) => <figure className={`gallery-frame gallery-frame--${index + 1}`} key={image.src} data-reveal><Image src={image.src} alt={image.alt} width={image.width} height={image.height} sizes="(max-width: 700px) 70vw, 20vw" /><figcaption>{image.note}</figcaption></figure>)}</div>
       </section>
 
       <section className="final-cta" data-reveal><p className="eyebrow">Your date is waiting</p><h2>Let&apos;s make something<br /><em>worth sharing.</em></h2><Link href="/contact" className="button button-cream">Start your booking <span>↗</span></Link></section>
