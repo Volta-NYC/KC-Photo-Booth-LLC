@@ -20,3 +20,11 @@ export const addOns = [
   { name: "Cold sparkles", price: "$150", image: "/assets/add-ons/cbe278_49895c7f00d249efa4b4d293905e46d2mv2.jpg" },
   { name: "Cotton candy", price: "$50", image: "/assets/cutouts/cotton-candy.png" },
 ]
+
+export const clients = [
+  { name: "The Bronx Collab", image: "/assets/clients/bronx-collab.png" },
+  { name: "Kecia Sharae", image: "/assets/clients/kecia-sharae.png" },
+  { name: "U.S. Department of Education", image: "/assets/clients/us-department-of-education.png" },
+  { name: "Cupenis by Elexis Eliana", image: "/assets/clients/cupenis.png" },
+  { name: "New York University", image: "/assets/clients/nyu.png" },
+]

@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { packages } from "@/lib/site-data"
+import { clients, packages } from "@/lib/site-data"
 
 const gallery = [
   { src: "/assets/gallery/gallery-03.jpg", alt: "Wedding guests celebrating with KC Photo Booth", note: "ONE MORE FOR THE CAMERA", width: 720, height: 1280 },
@@ -38,19 +38,19 @@ export default function HomePage() {
         <div className="experience-grid">
           <article className="experience-card experience-card--dark" data-reveal>
             <div className="card-number">01</div>
-            <Image src="/assets/optimized/kc-booth-setup-ballroom.jpg" alt="A KC 360 photo booth set up for a ballroom celebration" fill sizes="(max-width: 760px) 100vw, 50vw" />
+            <Image className="parallax-media" src="/assets/optimized/kc-booth-setup-ballroom.jpg" alt="A KC 360 photo booth set up for a ballroom celebration" fill sizes="(max-width: 760px) 100vw, 50vw" />
             <div className="experience-copy"><p className="eyebrow">The main event</p><h3>360 Photo Booth</h3><p>Guests step on, the camera circles, and your party gets a cinematic keepsake in seconds.</p><Link href="/services#360" className="circle-link" aria-label="Learn about the 360 Photo Booth">↗</Link></div>
           </article>
           <article className="experience-card experience-card--paper" data-reveal>
             <div className="card-number">02</div>
-            <Image src="/assets/optimized/kc-booth-setup-day.jpg" alt="Digital photo booth at a daytime event" fill sizes="(max-width: 760px) 100vw, 50vw" />
+            <Image className="parallax-media" src="/assets/optimized/kc-booth-setup-day.jpg" alt="Digital photo booth at a daytime event" fill sizes="(max-width: 760px) 100vw, 50vw" />
             <div className="experience-copy"><p className="eyebrow">Easy, polished, personal</p><h3>Digital Drop-Off</h3><p>A budget-friendly booth delivered to your celebration, ready for every smile, pose, and group shot.</p><Link href="/services#digital" className="circle-link" aria-label="Learn about Digital Drop-Off">↗</Link></div>
           </article>
         </div>
       </section>
 
       <section className="polaroid-section" data-reveal>
-        <div className="polaroid-image"><Image src="/assets/optimized/catina-lighting.jpg" alt="Catina of KC Photo Booth preparing event lighting" fill sizes="(max-width: 760px) 100vw, 40vw" /><span>BEHIND THE FLASH</span></div>
+        <div className="polaroid-image"><Image className="parallax-media" src="/assets/optimized/catina-lighting.jpg" alt="Catina of KC Photo Booth preparing event lighting" fill sizes="(max-width: 760px) 100vw, 40vw" /><span>BEHIND THE FLASH</span></div>
         <div className="polaroid-copy"><p className="eyebrow">The KC difference</p><h2>Not just a booth.<br /><em>Your people person.</em></h2><p>Kamar and Catina bring the camera-ready setup, the guest-facing warmth, and the little details that make everyone want one more take.</p><Link href="/about" className="button button-outline">Meet KC <span>↗</span></Link></div>
       </section>
 
@@ -59,9 +59,14 @@ export default function HomePage() {
         <div className="package-list">{packages.map((item) => <Link href="/packages" className="package-row" key={item.name}><span>{item.name}</span><strong>{item.price}</strong><span className="package-arrow">↗</span></Link>)}<Link className="text-link package-cta" href="/packages">View packages &amp; pricing <span>↗</span></Link></div>
       </section>
 
+      <section className="client-proof" aria-labelledby="clients-title">
+        <div className="client-proof__heading" data-reveal><p className="eyebrow">Happy clients, beautiful results</p><h2 id="clients-title">Good company,<br /><em>great memories.</em></h2><p>Trusted for celebrations, community moments, and events all over New York City.</p></div>
+        <div className="client-marquee" aria-label="KC Photo Booth clients"><div className="client-marquee__track">{[...clients, ...clients].map((client, index) => <div className="client-logo" key={`${client.name}-${index}`} aria-hidden={index >= clients.length}><Image src={client.image} alt={client.name} width={500} height={500} sizes="150px" /></div>)}</div></div>
+      </section>
+
       <section className="gallery-preview" aria-labelledby="gallery-title">
         <div className="section-heading gallery-heading" data-reveal><p className="eyebrow">Proof is in the pictures</p><h2 id="gallery-title">Good times,<br /><em>on repeat.</em></h2><p>Three little scenes from the kind of night you&apos;ll want to remember.</p><Link href="/gallery" className="text-link">See the gallery <span>↗</span></Link></div>
-        <div className="gallery-collage">{gallery.map((image, index) => <figure className={`gallery-frame gallery-frame--${index + 1}`} key={image.src} data-reveal><Image src={image.src} alt={image.alt} width={image.width} height={image.height} sizes="(max-width: 700px) 70vw, 20vw" /><figcaption>{image.note}</figcaption></figure>)}</div>
+        <div className="gallery-collage">{gallery.map((image, index) => <figure className={`gallery-frame gallery-frame--${index + 1}`} key={image.src} data-reveal><Image className="parallax-media" src={image.src} alt={image.alt} width={image.width} height={image.height} sizes="(max-width: 700px) 70vw, 20vw" /><figcaption>{image.note}</figcaption></figure>)}</div>
       </section>
 
       <section className="final-cta" data-reveal><p className="eyebrow">Your date is waiting</p><h2>Let&apos;s make something<br /><em>worth sharing.</em></h2><Link href="/contact" className="button button-cream">Start your booking <span>↗</span></Link></section>

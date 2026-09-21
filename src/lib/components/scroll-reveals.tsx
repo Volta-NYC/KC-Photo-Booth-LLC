@@ -15,6 +15,7 @@ const revealSelector = [
   ".pricing-card",
   ".process-step",
   ".addon-card",
+  ".client-proof__heading",
   ".masonry-item",
   ".about-founder-photos",
   ".about-story__copy",
@@ -46,11 +47,33 @@ export default function ScrollReveals() {
       target.classList.remove("is-visible")
       target.classList.add("reveal-target")
       target.style.setProperty("--reveal-delay", `${(index % 4) * 70}ms`)
+      target.style.setProperty("--reveal-x", index % 2 ? "26px" : "-26px")
     })
+
+    const parallaxTargets = Array.from(document.querySelectorAll<HTMLElement>(".parallax-media"))
+    let parallaxFrame = 0
+    const updateParallax = () => {
+      parallaxFrame = 0
+      parallaxTargets.forEach((target) => {
+        const bounds = target.getBoundingClientRect()
+        if (bounds.bottom < 0 || bounds.top > window.innerHeight) return
+        const offset = Math.max(-18, Math.min(18, (window.innerHeight / 2 - (bounds.top + bounds.height / 2)) * 0.045))
+        target.style.setProperty("--parallax-y", `${offset.toFixed(1)}px`)
+      })
+    }
+    const requestParallax = () => {
+      if (!parallaxFrame) parallaxFrame = window.requestAnimationFrame(updateParallax)
+    }
+    window.addEventListener("scroll", requestParallax, { passive: true })
+    window.addEventListener("resize", requestParallax)
+    requestParallax()
 
     const frame = window.requestAnimationFrame(() => targets.forEach((target) => observer.observe(target)))
     return () => {
       window.cancelAnimationFrame(frame)
+      window.cancelAnimationFrame(parallaxFrame)
+      window.removeEventListener("scroll", requestParallax)
+      window.removeEventListener("resize", requestParallax)
       observer.disconnect()
     }
   }, [pathname])
