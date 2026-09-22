@@ -42,40 +42,18 @@ export default function ScrollReveals() {
           observer.unobserve(entry.target)
         })
       },
-      { rootMargin: "0px 0px -8%", threshold: 0.12 },
+      { rootMargin: "0px 0px -3%", threshold: 0.08 },
     )
 
     targets.forEach((target, index) => {
       target.classList.remove("is-visible")
       target.classList.add("reveal-target")
-      target.style.setProperty("--reveal-delay", `${(index % 4) * 70}ms`)
-      target.style.setProperty("--reveal-x", index % 2 ? "26px" : "-26px")
+      target.style.setProperty("--reveal-delay", `${(index % 3) * 35}ms`)
     })
-
-    const parallaxTargets = Array.from(document.querySelectorAll<HTMLElement>(".parallax-media"))
-    let parallaxFrame = 0
-    const updateParallax = () => {
-      parallaxFrame = 0
-      parallaxTargets.forEach((target) => {
-        const bounds = target.getBoundingClientRect()
-        if (bounds.bottom < 0 || bounds.top > window.innerHeight) return
-        const offset = Math.max(-18, Math.min(18, (window.innerHeight / 2 - (bounds.top + bounds.height / 2)) * 0.045))
-        target.style.setProperty("--parallax-y", `${offset.toFixed(1)}px`)
-      })
-    }
-    const requestParallax = () => {
-      if (!parallaxFrame) parallaxFrame = window.requestAnimationFrame(updateParallax)
-    }
-    window.addEventListener("scroll", requestParallax, { passive: true })
-    window.addEventListener("resize", requestParallax)
-    requestParallax()
 
     const frame = window.requestAnimationFrame(() => targets.forEach((target) => observer.observe(target)))
     return () => {
       window.cancelAnimationFrame(frame)
-      window.cancelAnimationFrame(parallaxFrame)
-      window.removeEventListener("scroll", requestParallax)
-      window.removeEventListener("resize", requestParallax)
       observer.disconnect()
     }
   }, [pathname])
