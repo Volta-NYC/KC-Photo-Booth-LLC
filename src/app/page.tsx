@@ -67,7 +67,9 @@ export default function HomePage() {
 
       <section className="client-proof" aria-labelledby="clients-title">
         <div className="client-proof__heading" data-reveal><p className="eyebrow">Our clients</p><h2 id="clients-title">In good<br /><em>company.</em></h2><p>A few of the organizations and people who have celebrated with KC.</p></div>
-        <div className="client-marquee" aria-label="KC Photo Booth clients"><div className="client-marquee__track">{[...clients, ...clients].map((client, index) => <div className="client-logo" key={`${client.name}-${index}`} aria-hidden={index >= clients.length}><Image src={client.image} alt={client.name} width={500} height={500} sizes="150px" /></div>)}</div></div>
+        <ul className="client-list" aria-label="KC Photo Booth clients">
+          {clients.map((client) => <li className="client-logo" key={client.name}><Image src={client.image} alt={client.name} width={500} height={500} sizes="(max-width: 760px) 132px, 18vw" /></li>)}
+        </ul>
       </section>
 
       <section className="reviews-section" aria-labelledby="reviews-title">
