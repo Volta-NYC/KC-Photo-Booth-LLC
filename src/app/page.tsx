@@ -18,6 +18,7 @@ export default function HomePage() {
   return (
     <>
       <section className="hero-shell" aria-labelledby="hero-title">
+        <Image className="hero-media" src="/assets/optimized/kc-red-carpet-360.jpg" alt="KC Photo Booth set up for a red carpet event" fill priority sizes="100vw" />
         <div className="hero-copy" data-reveal>
           <p className="eyebrow">360° video &amp; digital photo booth · Bronx, NY</p>
           <h1 id="hero-title"><span>KC</span><span>PHOTO<br />BOOTH</span></h1>
