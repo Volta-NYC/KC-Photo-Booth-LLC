@@ -8,6 +8,12 @@ const gallery = [
   { src: "/assets/optimized/catina-lighting.jpg", alt: "Catina preparing KC Photo Booth lighting", note: "BEHIND THE FLASH", width: 650, height: 1200 },
 ]
 
+const clientNotes = [
+  "A photo booth experience that your guests can't forget.",
+  "Your guests should feel welcomed, comfortable, and ready to make a memory.",
+  "A photo booth experience curated to your event.",
+]
+
 export default function HomePage() {
   return (
     <>
@@ -60,8 +66,13 @@ export default function HomePage() {
       </section>
 
       <section className="client-proof" aria-labelledby="clients-title">
-        <div className="client-proof__heading" data-reveal><p className="eyebrow">Happy clients, beautiful results</p><h2 id="clients-title">Good company,<br /><em>great memories.</em></h2><p>Trusted for celebrations, community moments, and events all over New York City.</p></div>
+        <div className="client-proof__heading" data-reveal><p className="eyebrow">Our clients</p><h2 id="clients-title">In good<br /><em>company.</em></h2><p>A few of the organizations and people who have celebrated with KC.</p></div>
         <div className="client-marquee" aria-label="KC Photo Booth clients"><div className="client-marquee__track">{[...clients, ...clients].map((client, index) => <div className="client-logo" key={`${client.name}-${index}`} aria-hidden={index >= clients.length}><Image src={client.image} alt={client.name} width={500} height={500} sizes="150px" /></div>)}</div></div>
+      </section>
+
+      <section className="reviews-section" aria-labelledby="reviews-title">
+        <div className="reviews-heading" data-reveal><p className="eyebrow">Testimonials</p><h2 id="reviews-title">Happy clients,<br /><em>beautiful results.</em></h2></div>
+        <div className="reviews-grid">{clientNotes.map((note, index) => <article className="review-card" data-reveal key={note}><span>0{index + 1}</span><blockquote>“{note}”</blockquote><p>KC PHOTO BOOTH</p></article>)}</div>
       </section>
 
       <section className="gallery-preview" aria-labelledby="gallery-title">
