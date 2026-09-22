@@ -56,7 +56,11 @@ export default function HomePage() {
       </section>
 
       <section className="polaroid-section" data-reveal>
-        <div className="polaroid-image"><Image className="parallax-media" src="/assets/optimized/catina-lighting.jpg" alt="Catina of KC Photo Booth preparing event lighting" fill sizes="(max-width: 760px) 100vw, 40vw" /><span>BEHIND THE FLASH</span></div>
+        <div className="people-collage" aria-label="Behind the scenes at KC Photo Booth">
+          <figure className="people-collage__primary"><Image className="parallax-media" src="/assets/optimized/catina-lighting.jpg" alt="Catina of KC Photo Booth preparing event lighting" fill sizes="(max-width: 760px) 72vw, 33vw" /><figcaption>BEHIND THE FLASH</figcaption></figure>
+          <figure className="people-collage__detail"><Image src="/assets/gallery/gallery-03.jpg" alt="Wedding guests celebrating with KC Photo Booth" fill sizes="(max-width: 760px) 42vw, 18vw" /></figure>
+          <figure className="people-collage__booth"><Image src="/assets/optimized/kc-booth-setup-day.jpg" alt="KC digital photo booth ready for an event" fill sizes="(max-width: 760px) 38vw, 15vw" /></figure>
+        </div>
         <div className="polaroid-copy"><p className="eyebrow">The KC difference</p><h2>Not just a booth.<br /><em>Your people person.</em></h2><p>Kamar and Catina bring the camera-ready setup, the guest-facing warmth, and the little details that make everyone want one more take.</p><Link href="/about" className="button button-outline">Meet KC <span>↗</span></Link></div>
       </section>
 
