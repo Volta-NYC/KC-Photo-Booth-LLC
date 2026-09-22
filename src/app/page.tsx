@@ -9,9 +9,9 @@ const gallery = [
 ]
 
 const clientNotes = [
-  "A photo booth experience that your guests can't forget.",
-  "Your guests should feel welcomed, comfortable, and ready to make a memory.",
-  "A photo booth experience curated to your event.",
+  { quote: "Loved the props. Very professional and friendly.", author: "Victoria McGr…" },
+  { quote: "Great work! She is the best in the Bronx. Top Notch Service!", author: "Keith Daniel" },
+  { quote: "Great photos !!", author: "Maya Pabon" },
 ]
 
 export default function HomePage() {
@@ -79,7 +79,7 @@ export default function HomePage() {
 
       <section className="reviews-section" aria-labelledby="reviews-title">
         <div className="reviews-heading" data-reveal><p className="eyebrow">Testimonials</p><h2 id="reviews-title">Happy clients,<br /><em>beautiful results.</em></h2></div>
-        <div className="reviews-grid">{clientNotes.map((note, index) => <article className="review-card" data-reveal key={note}><span>0{index + 1}</span><blockquote>“{note}”</blockquote><p>KC PHOTO BOOTH</p></article>)}</div>
+        <div className="reviews-grid">{clientNotes.map((note, index) => <article className="review-card" data-reveal key={note.author}><span>0{index + 1}</span><blockquote>“{note.quote}”</blockquote><p>Google review · {note.author}</p></article>)}</div>
       </section>
 
       <section className="gallery-preview" aria-labelledby="gallery-title">
